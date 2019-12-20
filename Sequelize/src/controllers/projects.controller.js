@@ -1,22 +1,5 @@
 import Project from "../models/projects";
 
-export const getProjects = async(req, res) => {
-    const projects = await Project.findAll();
-
-    res.status(200).json({ data: projects });
-};
-
-export const getProject = async(req, res) => {
-    const { id } = req.params;
-    const project = await Project.findAll({
-        where: {
-            id: id
-        }
-    });
-
-    res.status(200).json({ data: project });
-};
-
 export const createProjects = async(req, res) => {
     const { name, priority, description, deliverydate } = req.body;
     try {
@@ -42,6 +25,23 @@ export const createProjects = async(req, res) => {
     }
 };
 
+export const getProjects = async(req, res) => {
+    const projects = await Project.findAll();
+
+    res.status(200).json({ data: projects });
+};
+
+export const getProject = async(req, res) => {
+    const { id } = req.params;
+    const project = await Project.findAll({
+        where: {
+            id: id
+        }
+    });
+
+    res.status(200).json({ data: project });
+};
+
 export const updateProject = async(req, res) => {
     const { id } = req.params;
     const { name, priority, description, deliverydate } = req.body;
@@ -61,12 +61,16 @@ export const updateProject = async(req, res) => {
                 deliverydate
             });
         });
-    }
 
-    res.status(200).json({
-        message: "Project Updated successfully",
-        data: projects
-    });
+        res.status(200).json({
+            message: "Project Updated successfully",
+            //data: projects
+        });
+    } else {
+        res.status(404).json({
+            message: "There is no project"
+        });
+    }
 };
 
 export const deleteProject = async(req, res) => {
@@ -78,8 +82,13 @@ export const deleteProject = async(req, res) => {
         }
     });
 
-    res.json({
-        message: "Project Deleted successfully",
-        count: deleteProject
-    });
+    if (deleteProject > 0) {
+        res.status(200).json({
+            message: "Project Deleted successfully"
+        });
+    } else {
+        res.status(404).json({
+            message: "There is no project"
+        });
+    }
 };

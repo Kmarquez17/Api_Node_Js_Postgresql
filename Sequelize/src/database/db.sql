@@ -17,7 +17,7 @@ IF NOT EXISTS tasks
     name text not null check
 (name <> ''),
     done boolean,
-    projectId INTEGER REFERENCES projects
+    projectid INTEGER REFERENCES projects
 (id)
 );
 
@@ -38,9 +38,9 @@ VALUES
 
 
 
-INSERT INTO tasks (name, done, projectId) VALUES ('dowload Php', false, 1);
+INSERT INTO tasks (name, done, projectid) VALUES ('dowload Php', false, 1);
 
-INSERT INTO tasks (name, done, projectId) VALUES ('dowload Java', false, 2);
+INSERT INTO tasks (name, done, projectid) VALUES ('dowload Java', false, 2);
 
-INSERT INTO tasks (name, done, projectId) VALUES ('dowload React Js', false, 3);
-INSERT INTO tasks (name, done, projectId) VALUES ('Desing UI', false, 3);
+INSERT INTO tasks (name, done, projectid) VALUES ('dowload React Js', false, 3);
+INSERT INTO tasks (name, done, projectid) VALUES ('Desing UI', false, 3);
