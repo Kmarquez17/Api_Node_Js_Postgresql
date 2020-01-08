@@ -1,6 +1,6 @@
 # Guia para alojar API con node y postgresql en un servidor en la nubes de Heroku
 
-## Pasos para a seguir
+## Pasos a seguir
 
 - Crear un proyecto en heroku.
 - Añadimos el complemento de `Heroku Postgres` al proyecto en la seccion de recursos.
